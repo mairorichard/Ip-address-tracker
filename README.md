@@ -45,5 +45,7 @@ Users should be able to:
 
 - React + Vite
 - Tailwind CSS
+- Leaflet API
+- IP Geolocation API
 
 <!-- end -->
