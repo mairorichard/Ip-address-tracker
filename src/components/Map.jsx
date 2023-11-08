@@ -1,34 +1,33 @@
-import React, { useEffect } from "react";
+import React from "react";
+import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
 
 import markerIcon from "../assets/icon-location.svg";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
 const Map = ({ coordinates }) => {
-  //   useEffect(() => {
-  //     const map = L.map("map").setView([51.505, -0.09], 13);
-
-  //     // ... Other map initialization code ...
-
-  //     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //       maxZoom: 19,
-  //       attribution:
-  //         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  //     }).addTo(map);
-
-  //     var circle = L.circle([51.508, -0.11], {
-  //       color: "red",
-  //       fillColor: "#f03",
-  //       fillOpacity: 0.5,
-  //       radius: 500,
-  //     }).addTo(map);
-
-  //     return () => {
-  //       map.remove();
-  //     };
-  //   }, []);
-  return <div id="map" style={{ width: "100%", height: "400px" }}></div>;
+  const marker = new L.icon({ iconUrl: markerIcon });
+  let state = {
+    keyMAP: Math.random(),
+  };
+  return (
+    <MapContainer
+      key={state.keyMAP}
+      center={[coordinates.lat, coordinates.lng]}
+      zoom={18}
+      className="w-full h-3/5 z-0"
+    >
+      <TileLayer
+        attribution="Google Maps"
+        url="https://www.google.cn/maps/vt?lyrs=m@189&gl=cn&x={x}&y={y}&z={z}"
+      >
+        <Marker
+          position={[coordinates.lat, coordinates.lng]}
+          icon={marker}
+        ></Marker>
+      </TileLayer>
+    </MapContainer>
+  );
 };
 
 export default Map;
