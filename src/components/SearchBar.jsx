@@ -58,7 +58,7 @@ const SearchBar = ({ setIPAddress, fetchLocation }) => {
                 <path
                   fill="none"
                   stroke="#FFF"
-                  stroke-width="3"
+                  strokeWidth="3"
                   d="M2 1l6 6-6 6"
                 />
               </svg>
